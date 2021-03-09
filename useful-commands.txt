@@ -1,0 +1,3 @@
+docker run -t --name sn --mount type=bind,source=/home/lattice/code/mine/svelte-nodegui-starter,target=/app --mount type=bind,source=/home/lattice/code/mine/svelte-nodegui-starter/.cache,target=/root sn bash -c PATH="./node_modules/.bin:$PATH" npm run dev
+docker rm sn
+docker build -t sn:latest .

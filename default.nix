@@ -7,13 +7,15 @@ let
     # reuse the current configuration
     { config = config; };
 
-  npmScript = pkgs.writeShellScriptBin "npm" ''
-    ${pkgs.steam-run}/bin/steam-run ${pkgs.unstable.nodejs}/bin/npm $*
+  npmScript = pkgs.writeShellScriptBin "Npm" ''
+    ${unstable.steam-run}/bin/steam-run ${unstable.nodejs-15_x}/bin/npm $*
   '';
 in
 stdenv.mkDerivation rec {
   name = "svelte-nodegui";
   buildInputs = with pkgs; [
+    unstable.gcc
+    npmScript
     git
     unstable.cmake
     p7zip
